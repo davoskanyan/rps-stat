@@ -1,0 +1,97 @@
+<div style="width: 800px; margin-left: auto; margin-right: auto; margin-top: 20px">
+  <div style="width: 50%; float: left">
+    <h1>My move</h1>
+    <mat-radio-group class="example-radio-group" #myMove="matRadioGroup">
+      <mat-radio-button class="example-radio-button" [value]="Move.ROCK">
+        <img src="assets/rock.png" height="60px" width="auto">
+      </mat-radio-button>
+      <mat-radio-button class="example-radio-button" [value]="Move.PAPER">
+        <img src="assets/paper.png" height="60px" width="auto">
+      </mat-radio-button>
+      <mat-radio-button class="example-radio-button" [value]="Move.SCISSORS">
+        <img src="assets/scissors.png" height="60px" width="auto">
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <div style="width: 50%; float: left">
+    <h1>His move</h1>
+    <mat-radio-group class="example-radio-group" #hisMove="matRadioGroup">
+      <mat-radio-button class="example-radio-button" [value]="Move.ROCK">
+        <img src="assets/rock.png" height="60px" width="auto">
+      </mat-radio-button>
+      <mat-radio-button class="example-radio-button" [value]="Move.PAPER">
+        <img src="assets/paper.png" height="60px" width="auto">
+      </mat-radio-button>
+      <mat-radio-button class="example-radio-button" [value]="Move.SCISSORS">
+        <img src="assets/scissors.png" height="60px" width="auto">
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <div style="clear: both"></div>
+  <br>
+  <button style="margin-left: 60%; width: 90px; height: 30px;" (click)="addMove(myMove.value, hisMove.value)">
+    Submit
+  </button>
+  <div>
+    <h2>Counts</h2>
+    <div style="width: 30%; float: left">
+      <img src="assets/rock.png" height="45px" width="auto">
+      {{counts[0]}}
+    </div>
+    <div style="width: 30%; float: left">
+      <img src="assets/paper.png" height="45px" width="auto">
+      {{counts[1]}}
+    </div>
+    <div style="width: 30%; float: left">
+      <img src="assets/scissors.png" height="45px" width="auto">
+      {{counts[2]}}
+    </div>
+  </div>
+  <div style="clear: both"></div>
+  <div>
+    <h2 style="margin-top: 30px">Stats</h2>
+    <div style="width: 24%; float: left; margin-right: 1%">
+      <h3>After Win</h3>
+      <div class="decision-column">
+        <div *ngFor="let decision of afterWin" [ngClass]="Result[decision.resultHimself].toLowerCase()">
+          <span [class]="'result-' + Result[decision.result].toLowerCase()">a</span>
+          <span>{{getMessage(decision.resultHimself)}}</span>
+          <img [src]="'assets/' + Move[decision.move].toLowerCase() + '.png'" height="30px" width="auto">
+        </div>
+      </div>
+    </div>
+    <div style="width: 24%; float: left; margin-right: 1%">
+      <h3>After Draw</h3>
+      <div class="decision-column">
+        <div *ngFor="let decision of afterDraw" class="decision-column"
+             [class]="Result[decision.resultHimself].toLowerCase()">
+          <span [class]="'result-' + Result[decision.result].toLowerCase()">a</span>
+          <span>{{getMessage(decision.resultHimself)}}</span>
+          <img [src]="'assets/' + Move[decision.move].toLowerCase() + '.png'" height="30px" width="auto">
+        </div>
+      </div>
+    </div>
+    <div style="width: 24%; float: left; margin-right: 1%">
+      <h3>After Lose</h3>
+      <div class="decision-column">
+        <div *ngFor="let decision of afterLose" class="decision-column"
+             [class]="Result[decision.resultHimself].toLowerCase()">
+          <span [class]="'result-' + Result[decision.result].toLowerCase()">a</span>
+          <span>{{getMessage(decision.resultHimself)}}</span>
+          <img [src]="'assets/' + Move[decision.move].toLowerCase() + '.png'" height="30px" width="auto">
+        </div>
+      </div>
+    </div>
+    <div style="width: 24%; float: left; margin-right: 1%">
+      <h3>All</h3>
+      <div class="decision-column">
+        <div *ngFor="let decision of afterAll" class="decision-column"
+             [class]="Result[decision.resultHimself].toLowerCase()">
+          <span [class]="'result-' + Result[decision.result].toLowerCase()">a</span>
+          <span>{{getMessage(decision.resultHimself)}}</span>
+          <img [src]="'assets/' + Move[decision.move].toLowerCase() + '.png'" height="30px" width="auto">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
